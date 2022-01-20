@@ -47,7 +47,6 @@ function newGame(map)
     {
         for (x = 0; x < selectedMap.width; x++)
         {
-            console.log(selectedMap.mapGrid[y][x].toString());
             var tileType;
             switch(selectedMap.mapGrid[y][x].toString())
             {
