@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Sokoban</title>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Sokoban</h1>
+        </header>
+
+        <main id="game">
+        </main>
+
+        <script src="SokobanBase.js"></script>
+        <script src="Sokoban.js"></script>
+        <script>
+            newGame(tileMap01);
+        </script>
+
+        <aside>
+            <form>
+                <input type="button" value="Restart Level" onclick="newGame(selectedMap)" />
+                <hr />
+                <input type="button" value="Level 1" onclick="newGame(tileMap01)" />
+                <input type="button" value="Level 2" onclick="newGame(tileMap02)" />
+                <input type="button" value="Level 3" onclick="newGame(tileMap03)" />
+            </form>
+        </aside>
+
+        <footer>
+            <span>&copy; Andreas Berg</span>
+        </footer>
+
+    </body>
+
+</html>

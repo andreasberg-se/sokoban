@@ -1,0 +1,184 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    display: grid;
+    grid-template: auto auto 60px / repeat(3, 1fr);
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px auto;
+    width: 100%;
+    max-width: 1024px;
+}
+
+body > header {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: cornflowerblue;
+}
+
+body > header > h1 {
+    font-size: 3rem;
+    margin: 10px;
+    
+}
+
+body > main {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    display: grid;
+    grid-template: repeat(16, 1fr) / repeat(19, 1fr);
+    justify-content: center;
+    align-items: stretch;
+    border-width: 0px 0px 0px 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+body > main > .tile-space {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: lightgray;
+    background-image: url('images/space.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .tile-wall {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: darkslategray;
+    background-image: url('images/wall.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .tile-goal {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: gray;
+    background-image: url('images/goal.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .entity-player {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: lime;
+    background-image: url('images/player.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .entity-player-goal {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: lime;
+    background-image: url('images/player-goal.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .entity-block {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: olive;
+    background-image: url('images/block.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > main > .entity-block-goal {
+    display: flex;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: olive;
+    background-image: url('images/block-goal.png');
+    background-size: 100% 100%;
+    padding: 50% 0px;
+}
+
+body > aside {
+    grid-column: 3;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: palegreen;
+}
+
+body > aside > form  {
+    margin: 0px;
+    padding: 0px 10px 10px 10px;
+}
+
+body > aside > form > hr {
+    display: flex;
+    width: 100%;
+    height: 3px;
+    background-color: green;
+    margin: 10px 0px 0px 0px;
+}
+
+body > aside > form > input[type="button"]  {
+    margin: 10px 0px 0px 0px;
+    border-width: 1px;
+    border-color: darkgreen;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 5px;
+    width: 100%;
+    background-color: yellowgreen;
+}
+
+body > aside > form > input[type="button"]:hover  {
+    border-color: lime;
+    background-color: white;
+}
+
+body > aside > form > input[type="button"]:active  {
+    color: red;
+}
+
+body > footer {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-width: 0px 1px 1px 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+    background-color: lightskyblue;
+}
