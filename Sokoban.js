@@ -39,8 +39,8 @@ function newGame(map)
     selectedMap = map;
     document.getElementById("game").outerHTML = 
         '<main id="game" style="display: grid; grid-template: repeat(' + 
-        selectedMap.height.toString() + 
-        ', 1fr) / repeat(' + selectedMap.width.toString() + ', 1fr);"></main>';
+        selectedMap.height.toString() + ', 1fr) / repeat(' + 
+        selectedMap.width.toString() + ', 1fr);"></main>';
 
     document.getElementById("game").innerHTML = '';
     for (y = 0; y < selectedMap.height; y++)
