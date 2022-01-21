@@ -12,7 +12,7 @@ var position = {
     Y: 0
 };
 
-/* Directions */
+/* Directions. */
 var Directions = {
     Up: 0,
     Down: 1,
@@ -29,16 +29,16 @@ function makeTileId(x, y)
     return 'x' + x.toString() + 'y' + y.toString();
 }
 
-/* Get Tile Type. */
-function getTileType(x, y)
+/* Get Tile Class. */
+function getTileClass(x, y)
 {
     return document.getElementById(makeTileId(x, y)).className;
 }
 
-/* Set Tile */
-function setTile(x, y, tile)
+/* Set Tile Class. */
+function setTileClass(x, y, tileClass)
 {
-    document.getElementById(makeTileId(x, y)).className = tile;
+    document.getElementById(makeTileId(x, y)).className = tileClass;
 }
 
 /* Set up a new game and update the map. */
@@ -134,30 +134,30 @@ function movePlayer(direction)
             break;
     }
 
-    var playerElement = getTileType(position.X, position.Y);
+    var playerElement = getTileClass(position.X, position.Y);
     var targetX = position.X + x;
     var targetY = position.Y + y;
     if ((targetX < 0) || (targetX > selectedMap.width)) return;
     if ((targetY < 0) || (targetY > selectedMap.height)) return;
-    var targetElement = getTileType(targetX, targetY);
+    var targetElement = getTileClass(targetX, targetY);
 
     if ((targetElement == Tiles.Space) || (targetElement == Tiles.Goal))
     {
         if (targetElement == Tiles.Goal)
         {
-            setTile(targetX, targetY, Entities.PlayerGoal);
+            setTileClass(targetX, targetY, Entities.PlayerGoal);
         }
         else
         {
-            setTile(targetX, targetY, Entities.Player);
+            setTileClass(targetX, targetY, Entities.Player);
         }
         if (playerElement == Entities.PlayerGoal)
         {
-            setTile(position.X, position.Y, Tiles.Goal);
+            setTileClass(position.X, position.Y, Tiles.Goal);
         }
         else
         {
-            setTile(position.X, position.Y, Tiles.Space);
+            setTileClass(position.X, position.Y, Tiles.Space);
         }      
         position.X = targetX;
         position.Y = targetY;
@@ -168,33 +168,33 @@ function movePlayer(direction)
         var blockTargetY = targetY + y;
         if ((blockTargetX  < 0) || (blockTargetX > selectedMap.width)) return;
         if ((blockTargetY < 0) || (blockTargetY > selectedMap.height)) return;
-        var blockTargetElement = getTileType(blockTargetX, blockTargetY);
+        var blockTargetElement = getTileClass(blockTargetX, blockTargetY);
 
         if ((blockTargetElement == Tiles.Space) || (blockTargetElement == Tiles.Goal))
         {
             if (blockTargetElement == Tiles.Goal)
             {
-                setTile(blockTargetX, blockTargetY, Entities.BlockDone);
+                setTileClass(blockTargetX, blockTargetY, Entities.BlockDone);
             }
             else
             {
-                setTile(blockTargetX, blockTargetY, Entities.Block);
+                setTileClass(blockTargetX, blockTargetY, Entities.Block);
             }
             if (targetElement == Entities.BlockDone)
             {
-                setTile(targetX, targetY, Entities.PlayerGoal);
+                setTileClass(targetX, targetY, Entities.PlayerGoal);
             }
             else
             {
-                setTile(targetX, targetY, Entities.Player);
+                setTileClass(targetX, targetY, Entities.Player);
             }
             if (playerElement == Entities.PlayerGoal)
             {
-                setTile(position.X, position.Y, Tiles.Goal);
+                setTileClass(position.X, position.Y, Tiles.Goal);
             }
             else
             {
-                setTile(position.X, position.Y, Tiles.Space);
+                setTileClass(position.X, position.Y, Tiles.Space);
             }
             position.X = targetX;
             position.Y = targetY;
@@ -216,7 +216,7 @@ function getRemainingGoals()
     {
         for (x = 0; x < selectedMap.width; x++)
         {
-            if ((getTileType(x, y) == Tiles.Goal) || ((getTileType(x, y) == Entities.PlayerGoal)))
+            if ((getTileClass(x, y) == Tiles.Goal) || ((getTileClass(x, y) == Entities.PlayerGoal)))
             {
                 goals++;
             }
