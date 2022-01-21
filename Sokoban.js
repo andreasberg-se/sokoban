@@ -12,6 +12,14 @@ var position = {
     Y: 0
 };
 
+/* Directions */
+var Directions = {
+    Up: 0,
+    Down: 1,
+    Left: 2,
+    Right: 3
+};
+
 /* Selected map. */
 var selectedMap = tileMap01;
 
@@ -39,7 +47,7 @@ function newGame(map)
     selectedMap = map;
     document.getElementById("game").outerHTML = 
         '<main id="game" style="display: grid; grid-template: repeat(' + 
-        selectedMap.height.toString() + ', 1fr) / repeat(' + 
+        selectedMap.height.toString() + ', 1fr) / repeat(' +
         selectedMap.width.toString() + ', 1fr);"></main>';
 
     document.getElementById("game").innerHTML = '';
@@ -47,33 +55,33 @@ function newGame(map)
     {
         for (x = 0; x < selectedMap.width; x++)
         {
-            var tileType;
+            var tileClass;
             switch(selectedMap.mapGrid[y][x].toString())
             {
                 case 'W':
-                    tileType = Tiles.Wall;
+                    tileClass = Tiles.Wall;
                     break;
 
                 case 'G':
-                    tileType = Tiles.Goal;
+                    tileClass = Tiles.Goal;
                     break;
 
                 case 'B':
-                    tileType = Entities.Block;
+                    tileClass = Entities.Block;
                     break;
 
                 case 'P':
-                    tileType = Entities.Player;
+                    tileClass = Entities.Player;
                     position.X = x;
                     position.Y = y;
                     break;
 
                 default:
-                    tileType = Tiles.Space;
+                    tileClass = Tiles.Space;
             }
             let tileElement = document.createElement('div');
             tileElement.id = makeTileId(x, y);
-            tileElement.className = tileType;
+            tileElement.className = tileClass;
             document.getElementById("game").appendChild(tileElement);
         }
     }
@@ -85,26 +93,47 @@ function keyPress(e)
     switch (e.key)
     {
         case 'ArrowUp':
-            movePlayer(0, -1);
+            movePlayer(Directions.Up);
             break;
 
         case 'ArrowDown':
-            movePlayer(0, 1);
+            movePlayer(Directions.Down);
             break;
                 
         case 'ArrowLeft':
-            movePlayer(-1, 0);
+            movePlayer(Directions.Left);
             break;
                     
         case 'ArrowRight':
-            movePlayer(1, 0);
+            movePlayer(Directions.Right);
             break;
     }
 }
 
 /* Handle player movement and pushing blocks. */
-function movePlayer(x, y)
+function movePlayer(direction)
 {
+    var x = 0;
+    var y = 0;
+    switch(direction)
+    {
+        case Directions.Up:
+            y = -1;
+            break;
+
+        case Directions.Down:
+            y = 1;
+            break;
+
+        case Directions.Left:
+            x = -1;
+            break;
+
+        case Directions.Right:
+            x = 1;
+            break;
+    }
+
     var playerElement = getTileType(position.X, position.Y);
     var targetX = position.X + x;
     var targetY = position.Y + y;
